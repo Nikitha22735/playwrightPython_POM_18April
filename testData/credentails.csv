@@ -1,0 +1,6 @@
+email,password,confirmpassword,firstName,lastName,age
+test1@gmail.com,Admin1@123,Admin1@123,test1,test1_1,20
+test2@gmail.com,Admin2@123,Admin2@123,test2,test1_2,20
+test2@gmail.com,Admin2@123,Admin2@123,test3,test1_3,20
+test2@gmail.com,Admin2@123,Admin2@123,test4,test1_4,20
+test2@gmail.com,Admin2@123,Admin2@123,test5,test1_5,20

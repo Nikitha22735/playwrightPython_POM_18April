@@ -5,6 +5,7 @@ import pytest
 
 def test_sum3(precondition2):
     print("This is a sample test file.")
+    print("hello")
 
 
 @pytest.mark.skip

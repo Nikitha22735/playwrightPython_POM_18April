@@ -6,3 +6,4 @@ import pytest
 def test_addition(a,b):
     c= a+b
     print(c)
+    print(d)

@@ -1,8 +1,10 @@
+import os
+
 from playwright.sync_api import expect
 class homePage:
 
     def __init__(self,page):
-         self.accountsNdList = page.locator("//span[contains(text(),'Account & List')]")
+         self.accountsNdList = page.locator(os.getenv("accndlist"))
          self.searchBox = page.locator("input#twotabsearchtextbox")
          self.goButton = page.get_by_role("button", name="Go", exact=True)
 

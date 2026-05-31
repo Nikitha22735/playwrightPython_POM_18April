@@ -1,10 +1,12 @@
 import json
+import os
 
 from playwright.sync_api import sync_playwright,expect
 import pytest
 from pages.homePage import homePage
 from pages.loginPage import loginPage
 from utils.jsonhandling import jsonhandling
+from utils.excelhandling import handlingExcel
 
 filePathJson = "testData/credentials.json"
 
@@ -13,9 +15,11 @@ filePathJson = "testData/credentials.json"
 def test_positiveLogin(page,launchAmazon,homePageObj,loginPageObj):
     creds = jsonhandling(filePathJson)
     homePageObj.clickOnAccountsNdList()
-    loginPageObj.enterEmailID(creds["email"])
+    # loginPageObj.enterEmailID(os.getenv("usname"))
+    creds = handlingExcel()
+    loginPageObj.enterEmailID(creds[1][0])
     loginPageObj.clickOnSubmit()
-    loginPageObj.enterPassword(creds["password"])
+    loginPageObj.enterPassword(os.getenv("pw"))
     loginPageObj.clickOnSubmit()
     homePageObj.validateTheVisibilityOfSearchBox()
     

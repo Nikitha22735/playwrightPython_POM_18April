@@ -32,3 +32,13 @@ def homePageObj(page):
 def loginPageObj(page):
     loginPageObj = loginPage(page)
     return loginPageObj
+
+
+# @pytest.fixture()
+# def page():
+#     with sync_playwright() as p:
+#         browser = p.chromium.launch(headless=False)
+#         context = browser.new_context(viewport={"width": 1280, "height": 720})
+#         page = context.new_page()
+#         yield page
+#         browser.close()

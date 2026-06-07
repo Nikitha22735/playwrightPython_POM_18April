@@ -84,7 +84,8 @@ def test_handlingExcel():
 # ====================================cli=============================================
 # set usname=Tripura&&set pw=Welcome123&&pytest -m datahandling -s
 # $env:usname=Tripura;$env:pw=Welcome123;pytest -m datahandling -s
-# @pytest.mark.datahandling
+@pytest.mark.login
+
 def test_cli():
     userName1_1 = os.getenv("usname")
     password1_1 = os.getenv("pw")
@@ -95,7 +96,7 @@ def test_cli():
 # pip install python-dotenv
 # set ENV=dev&&pytest -m datahandling -s
 # $env:ENV=dev;pytest -m datahandling -s
-@pytest.mark.datahandling
+# @pytest.mark.datahandling
 def test_env():
     # load_dotenv(".env.prod")
     load_dotenv(load_dotenv((f".env.{os.getenv('ENV')}")))

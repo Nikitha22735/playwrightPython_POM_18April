@@ -11,6 +11,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      # Set environment variables for the workflow
+      usname: ${{variables.USNAME}}
+      pw: ${{secrets.PW}}
+      
 
     steps:
       # 1️⃣ Checkout repository
@@ -34,7 +39,7 @@ jobs:
       # 4️⃣ Run Playwright tests (parallel, keep artifacts)
       - name: Run Playwright Tests
         run: |
-          pytest -n 6 -m "login" \
+          pytest -n 6 -m "login" -s\
             --alluredir=allure-results \
             --capture=tee-sys
         continue-on-error: true

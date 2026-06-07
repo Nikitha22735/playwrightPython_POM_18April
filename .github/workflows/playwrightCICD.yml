@@ -12,7 +12,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      # Set environment variables for the workflow
+      # Set environment variables for the workflows
       usname: ${{variables.USNAME}}
       pw: ${{secrets.PW}}
       

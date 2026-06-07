@@ -1,18 +1,12 @@
 name: Playwright CI/CD april 18 batch
 
-on:
+on: 
   push:
-    branches:
-      - main
-
+    branches: [main]
   pull_request:
-    branches:
-      - main
-  workflow_dispatch:
-  schedule:
-    - cron: "0 21 * * *" # runs daily at 9 PM UTC
-    
+    branches: [main]
 
+    
 jobs:
   test:
     runs-on: ubuntu-latest

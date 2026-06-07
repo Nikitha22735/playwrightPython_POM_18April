@@ -1,27 +1,35 @@
-from playwright.sync_api import expect
+from playwright.sync_api import Page, expect
 import pytest
+
 from pages.homePage import homePage
-from pages.resultPage import resultPage
+from pages.resultPage import resultsPage
 
 
 @pytest.mark.results
-def test_search_and_filter_iphone(page, launchAmazon):
-    """Test to search for iPhone and filter by Apple brand"""
-    homePageObj = homePage(page)
-    resultPageObj = resultPage(page)
+def test_validatingCartCount(page: Page, homePageObj, resultsPageObj):
+
+    homePageObj.enterSearchText("iphone 16")
+    homePageObj.clickOnSearchBtn()
+    page.wait_for_timeout(3000)
+    count_beforeAdding = resultsPageObj.getCartCount()
+    # page.pause()
+    resultsPageObj.addAnItmeToCart("iPhone 16")
+    page.wait_for_timeout(3000)
+    count_AfterAdding = resultsPageObj.getCartCount()
+    assert int(count_AfterAdding)>int(count_beforeAdding)
+
+
+
+def test_validatingCartCount_1(page: Page, homePageObj, resultsPageObj):
+    page.goto("https://www.amazon.in/")
+    # homePageObj = homePage(page)
+    # resultsPageObj = resultsPage(page)
+    homePageObj.enterSearchText("iphone 16")
+    homePageObj.clickOnSearchBtn()
+    page.wait_for_timeout(3000)
+    count_beforeAdding = resultsPageObj.getCartCount()
+    resultsPageObj.addAnItmeToCart("iPhone 16")
+    page.wait_for_timeout(3000)
+    count_AfterAdding = resultsPageObj.getCartCount()
+    assert int(count_AfterAdding)>int(count_beforeAdding)
     
-    # Search for iPhone
-    homePageObj.search_product("iphone")
-    homePageObj.click_search_button()
-    page.wait_for_timeout(2000)
-    
-    # Filter by Apple brand
-    resultPageObj.select_apple_brand()
-    page.wait_for_timeout(2000)
-    
-    # Click on additional filter option
-    resultPageObj.click_filter_option()
-    page.wait_for_timeout(2000)
-    
-    # Validate search results are displayed
-    resultPageObj.validate_search_results_visible()

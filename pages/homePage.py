@@ -27,3 +27,14 @@ class homePage:
     def click_search_button(self):
          """Click the Go button to search"""
          self.goButton.click()
+
+     
+    def enterSearchText(self, product):
+        self.searchBar.wait_for(state='visible')
+        self.searchBar.fill(product)
+
+    def validateTheVisibilityOfCarticon(self):
+        expect(self.cartIcon).to_be_visible()
+
+    def clickOnSearchBtn(self):
+        self.searchBtn.click()

@@ -24,6 +24,10 @@ def precondition2():
 def launchAmazon(page):
     page.goto("https://www.amazon.in/")
     page.wait_for_timeout(3000)
+    continue_btn = page.locator("//*[contains(text(),'ontinue s')]").last
+
+    if continue_btn.is_visible(timeout=15000):
+        continue_btn.click()
 
 @pytest.fixture(scope="function")
 def homePageObj(page):

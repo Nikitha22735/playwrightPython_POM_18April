@@ -1,11 +1,16 @@
-name: Playwright CI/CD april 18 batch
+name: Playwright CI/CD april 18 batch with marks
 
 on: 
   push:
     branches: [main]
   pull_request:
     branches: [main]
-  workflow_dispatch:  
+  workflow_dispatch:
+    inputs:
+      marker:
+        description: 'Enter the marker to run'
+        required: true
+        default: 'login'
 
     
 jobs:
@@ -39,7 +44,7 @@ jobs:
       # 4️⃣ Run Playwright tests (parallel, keep artifacts)
       - name: Run Playwright Tests
         run: |
-          pytest -n 6 -m "login" -s\
+          pytest -n 6 -m "${{ github.event.inputs.marker }}" -s\
             --alluredir=allure-results \
             --capture=tee-sys
         continue-on-error: true

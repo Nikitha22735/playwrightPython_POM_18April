@@ -84,18 +84,21 @@ def test_handlingExcel():
 # ====================================cli=============================================
 # set usname=Tripura&&set pw=Welcome123&&pytest -m datahandling -s
 # $env:usname=Tripura;$env:pw=Welcome123;pytest -m datahandling -s
-# @pytest.mark.datahandling
+@pytest.mark.login
+
 def test_cli():
     userName1_1 = os.getenv("usname")
     password1_1 = os.getenv("pw")
-    print(userName1_1)
-    print(password1_1)
+    if userName1_1 is None or password1_1 is None:
+        print("Environment variables 'usname' and 'pw' are not set.")
+    else:
+        print("username and password are fetched from cli successfully")
 
 # ===============================env file===========================================
 # pip install python-dotenv
 # set ENV=dev&&pytest -m datahandling -s
 # $env:ENV=dev;pytest -m datahandling -s
-@pytest.mark.datahandling
+# @pytest.mark.datahandling
 def test_env():
     # load_dotenv(".env.prod")
     load_dotenv(load_dotenv((f".env.{os.getenv('ENV')}")))

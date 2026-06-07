@@ -1,3 +1,4 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Sun Jun 07 14:32:26 UTC 2026","Sun Jun 07 14:32:57 UTC 2026","31045","tests","test_login","","","","test_positiveLogin[chromium]",""
-"passed","Sun Jun 07 14:32:26 UTC 2026","Sun Jun 07 14:32:27 UTC 2026","1056","tests","test_login","","","","test_email_negitiveLogin[chromium]",""
+"broken","Sun Jun 07 14:47:22 UTC 2026","Sun Jun 07 14:47:53 UTC 2026","31021","tests","test_login","","","","test_positiveLogin[chromium]",""
+"passed","Sun Jun 07 14:47:22 UTC 2026","Sun Jun 07 14:47:23 UTC 2026","1029","tests","test_login","","","","test_email_negitiveLogin[chromium]",""
+"passed","Sun Jun 07 14:47:16 UTC 2026","Sun Jun 07 14:47:16 UTC 2026","1","tests","test_dataHandling","","","","test_cli",""

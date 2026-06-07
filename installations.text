@@ -89,7 +89,7 @@ pytest -m login --headed -n 2 --html=report.html
 start report.html
 2. allure: pip install allure-pytest
 pytest -m login --headed -n 2 --alluredir=allure-results
-allure serve allure-results
+allure serve allure-results or allure generate allure-results -o allure-report --clean
 
 
 

@@ -89,8 +89,10 @@ def test_handlingExcel():
 def test_cli():
     userName1_1 = os.getenv("usname")
     password1_1 = os.getenv("pw")
-    print(userName1_1)
-    print(password1_1)
+    if userName1_1 is None or password1_1 is None:
+        print("Environment variables 'usname' and 'pw' are not set.")
+    else:
+        print("username and password are fetched from cli successfully")
 
 # ===============================env file===========================================
 # pip install python-dotenv

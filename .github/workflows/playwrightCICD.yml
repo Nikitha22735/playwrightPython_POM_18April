@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Repository from my github
         uses: actions/checkout@v4
 
-      # 2️⃣ Set up Python
+      # 2️⃣ Set up Python version
       - name: Set up Python
         uses: actions/setup-python@v4
         with:

@@ -1,6 +1,9 @@
 1. pytest
 2. pytest-playwright
 3. playwright browsers
+4. playwright
+5. openpyxl
+6.python-dotenv
 
 
 
@@ -59,3 +62,43 @@ session-precond
         function-postCondition
     module-postCondition
 session-postConditio
+
+
+
+
+
+
+
+test1
+test2
+test3
+test4
+test5
+
+
+3
+
+bw1: test4
+
+bw3: test5
+
+
+reports:
+1. html: pip install pytest-html
+pytest -m login --headed -n 2 --html=report.html
+start report.html
+2. allure: pip install allure-pytest
+pytest -m login --headed -n 2 --alluredir=allure-results
+allure serve allure-results
+
+
+
+==============================================================
+
+1. laptop;    virtual
+2. python
+3. git clone
+4. install requirements.txt
+5. install playwright browsers
+6. execute testcase
+7. allure 

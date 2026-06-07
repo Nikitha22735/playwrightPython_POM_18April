@@ -1,7 +1,9 @@
+import allure
 from playwright.sync_api import sync_playwright
 import pytest
 
-from pages import homePage, loginPage
+from pages.homePage import homePage
+from pages.loginPage import loginPage
 
 
 @pytest.fixture(scope="session")
@@ -34,11 +36,35 @@ def loginPageObj(page):
     return loginPageObj
 
 
-# @pytest.fixture()
-# def page():
+# # @pytest.fixture(scope="function")
+# @pytest.mark.parametrize("browser", ["chromium", "firefox", "safari"])
+# def page(browser):
 #     with sync_playwright() as p:
-#         browser = p.chromium.launch(headless=False)
-#         context = browser.new_context(viewport={"width": 1280, "height": 720})
+#         if browser == "chromium":
+#             browser_instance = p.chromium.launch(headless=False)
+#         elif browser == "firefox":
+#             browser_instance = p.firefox.launch(headless=False)
+#         else:
+#             browser_instance = p.webkit.launch(headless=False)
+#         context = browser_instance.new_context()
 #         page = context.new_page()
 #         yield page
-#         browser.close()
+#         browser_instance.close()
+
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item):
+    outcome = yield   ### execute my testcase
+    report = outcome.get_result()
+
+    if report.failed:
+        page = item.funcargs.get("page")
+
+        if page:
+            allure.attach(
+                page.screenshot(),
+                name="failed step",
+                attachment_type=allure.attachment_type.PNG
+            )
+
+

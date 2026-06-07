@@ -11,6 +11,9 @@ on:
         description: 'Enter the marker to run'
         required: true
         default: 'login'
+  schedule:
+    - cron: '30 22 * 6 1'    #min hour DayOfMonth month week(0=sun)  UTC
+  
 
     
 jobs:

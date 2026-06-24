@@ -4,6 +4,7 @@ import pytest
 
 from pages.homePage import homePage
 from pages.loginPage import loginPage
+from pages.automationPracticePage import AutomationPracticePage
 
 
 @pytest.fixture(scope="session")
@@ -11,8 +12,11 @@ def precondition4():
     print("launching amazon")
     yield
     print("closing amazon")
-
-
+# @pytest.fixture(scope="function")
+# def page():
+#      with sync_playwright() as p:
+#         browser = p.chromium.connect('wss://cdp.lambdatest.com/playwright?capabilities=' + urllib.parse.quote(
+#         json.dumps(capabilities)))
 
 @pytest.fixture(scope="function")
 def precondition2():
@@ -38,6 +42,11 @@ def homePageObj(page):
 def loginPageObj(page):
     loginPageObj = loginPage(page)
     return loginPageObj
+
+@pytest.fixture(scope="function")
+def automationPracticePageObj(page):
+    automationPageObj = AutomationPracticePage(page)
+    return automationPageObj
 
 
 # # @pytest.fixture(scope="function")

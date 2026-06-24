@@ -15,7 +15,9 @@ filePathJson = "testData/credentials.json"
 @pytest.mark.login
 def test_positiveLogin(page,launchAmazon,homePageObj,loginPageObj):
     creds = jsonhandling(filePathJson)
-    
+    # data = postApi()
+    # id = data[0]
+    # pw = datat[1]
     homePageObj.clickOnAccountsNdList()
     # loginPageObj.enterEmailID(os.getenv("usname"))
     # creds = handlingExcel()
